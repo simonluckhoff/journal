@@ -2,17 +2,17 @@ from datetime import date
 import json
 import os
 
-date_today = date.today().strftime("%d-%m-%Y")
 
-print(date_today)
-user_entry = input()
+def lets_journal():
+    date_today = date.today().strftime("%d-%m-%Y")
+    print(date_today)
+    user_entry = input()
 
-new_entry = {
-    "date_today": date_today,
-    "user_entry": user_entry
-}
+    new_entry = {
+        "date_today": date_today,
+        "user_entry": user_entry
+    }
 
-def saving_entry_to_json():
     filename = "entries.json"
 
     if not os.path.exists(filename) or os.stat(filename).st_size == 0:
@@ -26,5 +26,5 @@ def saving_entry_to_json():
     with open(filename, "w") as file:
         json.dump(data, file, indent=2)
 
-# must call the method you idiot.
-saving_entry_to_json()
+# must call the methods you idiot.
+
