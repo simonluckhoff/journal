@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import Home from './pages/home.jsx';
+import NewEntry from './pages/NewEntry.jsx';
+import './styles/App.scss';
 
 function App() {
   return (
       <Router>
         <Routes>
-          {/* im naming the path here haha /home */}
-          <Route path="/home" element={<Home/>}></Route>
-          <Route path="/new-entry" element={<NewEntry/>}></Route>
-          <Route path="/journal-entries" element={<JournalEntries/>}></Route>
+          <Route path="/" element={<Home/>} />
+          <Route path="/new-entry" element={<NewEntry/>} />
         </Routes>
       </Router>
   );

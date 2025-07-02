@@ -1,7 +1,5 @@
-
-
-
-
 Things to add:
-- I want to be able to password protect journal entries
-- connect Scss
+- Password protect journal entries
+- Connect Scss
+- Need to be able to edit an entry... ( last edited at() )
+

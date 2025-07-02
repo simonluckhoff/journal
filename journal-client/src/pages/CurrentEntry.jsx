@@ -1,4 +1,4 @@
-function NewEntry() {
+function CurrentEntry() {
     return (
         <div className="home-page">
             <div className='home-card'>
@@ -8,4 +8,4 @@ function NewEntry() {
     );
 }
 
-export default NewEntry;
+export default CurrentEntry;
