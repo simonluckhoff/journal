@@ -2,7 +2,6 @@ from datetime import date
 import json
 import os
 
-
 def lets_journal():
     date_today = date.today().strftime("%d-%m-%Y")
     print(date_today)
@@ -10,6 +9,7 @@ def lets_journal():
 
     new_entry = {
         "date_today": date_today,
+        "slug": date_today,
         "user_entry": user_entry
     }
 
@@ -27,4 +27,3 @@ def lets_journal():
         json.dump(data, file, indent=2)
 
 # must call the methods you idiot.
-
