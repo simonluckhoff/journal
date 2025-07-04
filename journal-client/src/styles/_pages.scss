@@ -12,3 +12,11 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 // Home Page ----------------------------------------------
+
+.entry_body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

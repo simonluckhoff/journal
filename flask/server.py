@@ -6,24 +6,14 @@ import json
 app = Flask(__name__)
 CORS(app)      # allows for requests from React
 
-#  GET fetches the entries
-#  POST sends an entry to the json
+# that /api/ allows to navigate, reverse proxying
+@app.route('/api/entries', methods=['GET'])
+def get_entries():
+    with open('entries.json') as f:
+        entries = json.load(f)
+    return jsonify(entries)
 
-@app.route('/api/journal', methods=['GET', 'POST'])
-def display_entries():
-    if request.method == 'GET':
-        with open('entries.json', 'r') as file:
-            data = json.load(file)
-        return jsonify(data['journal_entries'])
 
-    elif request.method == 'POST':
-        data = request.get_json()
-        if not data:
-            return jsonify({"status": "error", "message": "No data provided"}), 400
-        result = lets_journal
-        return jsonify(result)
-
-    return jsonify(lets_journal)
-
+# need this line to engage with the server, otherwise will just execute the folder. 
 if __name__ == '__main__':
     app.run(debug=True)
