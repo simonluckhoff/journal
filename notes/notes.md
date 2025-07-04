@@ -6,3 +6,8 @@ Things to add:
 See, our biggest problem here:
 1. Working with more than 1 python file.
 2. json is in the backend this time. 
+
+
+
+
+npm install sass
