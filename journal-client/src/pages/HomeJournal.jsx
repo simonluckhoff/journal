@@ -40,8 +40,7 @@ function HomeJournal() {
                     <ul>
                         {entries.map((entry, index) => (
                             <li key={index}>
-                                <Link to={`/entry/${entry.slug}`}>{entry.date_today}</Link>
-                                <p>{entry.title}</p>
+                                <Link to={`/entry/${entry.slug}`}>{entry.date_today}<p>{entry.title}</p></Link>
                             </li>
                         ))}
                     </ul>
