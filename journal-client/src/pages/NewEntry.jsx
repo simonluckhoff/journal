@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const AddEntry = () => {
+const NewEntry = () => {
     const [date_today, setDateToday] = useState('');
     const [title, setTitle] = useState('');
     const [user_entry, setUserEntry] = useState('');
@@ -18,7 +18,8 @@ const AddEntry = () => {
         }
         setError('');
 
-        const res = await fetch('/api/entry', {
+        // res is short for response! 
+        const res = await fetch('http://localhost:5000/api/entries', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -43,9 +44,22 @@ const AddEntry = () => {
         <div className="main">
             <h1>Enter a new entry</h1>
             <form onSubmit={handleSubmit}>
-                <label>date_today</label>
+                <label>Date:</label>
                 <input type="text" value={date_today}
                     onChange={(e) => setDateToday(e.target.value)} />
+                
+                <label>Title:</label>
+                <input type="text" value={title} 
+                    onChange={(e) => setTitle(e.target.value)} />
+
+                <label>Entry:</label>
+                <textarea type="text" value={user_entry} 
+                    onChange={(e) => setUserEntry(e.target.value)} 
+                    rows={10} 
+                />    
+
+                <button type='submit'>Add</button>
+                {error && <p style={{color: 'white', marginTop: '20px', marginBottom: '5px' }}>{error}</p>}        
             </form>
         </div>
     )
