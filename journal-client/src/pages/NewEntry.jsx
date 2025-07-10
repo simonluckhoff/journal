@@ -41,27 +41,30 @@ const NewEntry = () => {
     }
 
     return (
-        <div className="main">
-            <h1>Enter a new entry</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Date:</label>
-                <input type="text" value={date_today}
-                    onChange={(e) => setDateToday(e.target.value)} />
-                
-                <label>Title:</label>
-                <input type="text" value={title} 
-                    onChange={(e) => setTitle(e.target.value)} />
+        <div className="form-container">
+            <div className="form-card">
+                <h1>Enter a new entry</h1>
+                <form onSubmit={handleSubmit}>
+                    <label>Date:</label>
+                    <input type="text" value={date_today}
+                        onChange={(e) => setDateToday(e.target.value)} />
 
-                <label>Entry:</label>
-                <textarea type="text" value={user_entry} 
-                    onChange={(e) => setUserEntry(e.target.value)} 
-                    rows={10} 
-                />    
+                    <label>Title:</label>
+                    <input type="text" value={title}
+                        onChange={(e) => setTitle(e.target.value)} />
 
-                <button type='submit'>Add</button>
-                {error && <p style={{color: 'white', marginTop: '20px', marginBottom: '5px' }}>{error}</p>}        
-            </form>
+                    <label>Entry:</label>
+                    <textarea type="text" value={user_entry}
+                        onChange={(e) => setUserEntry(e.target.value)}
+                        rows={10}
+                    />
+
+                    <button type='submit'>Add</button>
+                    {error && <p className="error-msg">{error}</p>}
+                </form>
+            </div>
         </div>
+
     )
 }
 
