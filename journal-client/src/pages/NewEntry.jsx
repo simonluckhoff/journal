@@ -43,7 +43,7 @@ const NewEntry = () => {
     return (
         <div className="form-container">
             <div className="form-card">
-                <h1>Enter a new entry</h1>
+                <h1>enter a new entry</h1>
                 <form onSubmit={handleSubmit}>
                     <label>Date:</label>
                     <input type="text" value={date_today}
