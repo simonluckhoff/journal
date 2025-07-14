@@ -39,7 +39,7 @@ body{
         font-size: 2.5rem;
         font-weight: 600;
         margin: 0;
-        color: #FF991C;
+        color: #E86100;
       }
     }
 
@@ -58,15 +58,14 @@ body{
 
         &:hover {
           // color: #ffffff;
-          color: #FF991C;
+          color: #E86100;
         }
       }
 
       &:hover {
         transform: translateY(-2px);
         background: rgba(255, 255, 255, 0.5);
-  color: #FF991C;
-
+        color: #E86100;
       }
     }
   }
@@ -100,7 +99,7 @@ body{
 
           &:hover {
             background: rgba(255, 255, 255, 0.3);
-            color: #FF991C;
+            color: #E86100;
           }
 
           a {
@@ -111,7 +110,7 @@ body{
 
             &:hover {
               text-decoration: underline;
-              color: #FF991C;
+              color: #E86100;
             }
           }
 
@@ -164,7 +163,7 @@ h1 {
   text-align: right;
   font-size: 1.8rem;
   // color: #ffffff;
-  color: #FF991C;
+  color: #E86100;
 }
 
 form {
@@ -175,7 +174,7 @@ form {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: #FF991C;
+    color: #E86100;
   }
 
   input,
@@ -204,7 +203,7 @@ form {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
-  color: #FF991C;
+    color: #E86100;
 
 
     &:hover {
@@ -217,4 +216,93 @@ form {
     margin-top: 1rem;
     text-align: center;
   }
+}
+
+// ---------------------
+
+// Showing an entry
+
+.journal-home-page,
+.journal-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1D1D1D;
+}
+
+.journal-error-card,
+.journal-display-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  // -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  color: #E86100;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.journal-error-card h1,
+.journal-display-card h1 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: #f6f6f6;
+}
+
+.journal-edit-link a p {
+  font-size: 1rem;
+  color: #f6f6f6;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #E86100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.journal-edit-link a p:hover {
+  background-color: rgba(232, 97, 0, 0.1);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.journal-edit-link {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: flex-end;
+}
+
+.journal-display-card h3 {
+  display: flex;
+  align-items: left;
+  color: #eaeaea;
+}
+
+.journal-display-card p {
+  display: flex;
+  align-items: left;
+  color: #eaeaea;
+  margin-top: 1.5rem;
+}
+
+.journal-info-card {
+  margin-bottom: 2rem;
+}
+
+.journal-edit-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

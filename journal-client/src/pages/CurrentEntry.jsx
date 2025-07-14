@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function CurrentEntry() {
     const { slug } = useParams();
@@ -22,21 +23,29 @@ function CurrentEntry() {
 
     if (!entry) {
         return (
-            <div className="home-page">
-                <div className="home-card"><h1>entry not found.</h1></div>
+            <div className="journal-home-page">
+                <div className="journal-error-card">
+                    <h1>entry not found.</h1>
+                </div>
             </div>
         );
     }
 
     return (
-        <div className="home-journal">
-            <div className='home-card'>
-                <h1>{entry.date_today}</h1>
-                <h1>{entry.title}</h1>
-                <h1>{entry.user_entry}</h1>
+        <div className="journal-wrapper">
+            <div className="journal-display-card">
+                <div className="journal-edit-link">
+                    <Link to="/new-entry"><p>Edit</p></Link>
+                    <h1>{entry.date_today}</h1>
+                </div>
+                <div className="journal-info-card">
+                    <h3>{entry.title}</h3>
+                    <p>{entry.user_entry}</p>
+                </div>
             </div>
         </div>
     );
+
 }
 
 export default CurrentEntry;

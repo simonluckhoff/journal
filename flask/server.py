@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)   
 
 # that /api/ allows to navigate, reverse proxying
-@app.route('/api/entries', methods=['GET', 'POST'])
+@app.route('/api/entries', methods=['GET', 'POST', 'PATCH'])
 def add_entry():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     json_file = os.path.join(current_dir, 'entries.json')
@@ -51,6 +51,25 @@ def add_entry():
             return jsonify(entries), 200
         except Exception as e:
             return jsonify({'message': f'Error: {str(e)}'}), 500
+        
+    if request.method == 'PATCH':
+        data = request.get_json()
+        with open('entries.json', 'r') as f:
+            entries = json.load(f)
+
+        for entry in entries:
+            if entry['slug'] == slug:
+                entry['date_today'] = data.get('date_today', entry['date_today'])
+                entry['title'] = data.get('title', entry['title'])
+                entry['user_entry'] = data.get('user_entry', entry['user_entry'])
+                break
+
+        with open('entries.json', 'w') as f:
+            json.dump(entries, f, indent=2)
+
+        return jsonify({'message': 'Entry updated successfully'})
+
+
         
 if __name__ == '__main__':
     app.run(debug=True)

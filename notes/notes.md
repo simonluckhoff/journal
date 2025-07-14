@@ -10,4 +10,17 @@ See, our biggest problem here:
 
 
 
-npm install sass
+Problems:
+- the html tags dont have custom tabs. Need to fix that. Because everything is   being affected. 
+- being able to edit a note. 
+
+
+
+
+
+
+
+Being able to edit:
+- need a slug thingy. 
+- need a form
+- Needs a Put/Patch request. 
