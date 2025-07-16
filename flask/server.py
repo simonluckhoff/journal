@@ -60,6 +60,7 @@ def add_entry():
         
     if request.method == 'PATCH':
         data = request.get_json()
+        slug = data.get('slug')
         with open('entries.json', 'r') as f:
             entries = json.load(f)
 
