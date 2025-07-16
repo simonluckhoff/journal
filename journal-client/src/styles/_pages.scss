@@ -20,7 +20,7 @@ body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;  
 }
 
-.home-journal {
+  .home-journal {
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -70,6 +70,37 @@ body{
     }
   }
 
+
+
+  // --------------------------------
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1100px;
+
+    li {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, background 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+}
+
+  // --------------------------------
+  
+
+
   .entry_body {
     width: 100%;
     max-width: 1100px;
@@ -93,9 +124,6 @@ body{
           padding: 1rem;
           margin-bottom: 1rem;
           border-radius: 8px;
-          transition: background 0.3s ease;
-          // color: #FF991C;
-          
 
           &:hover {
             background: rgba(255, 255, 255, 0.3);
@@ -105,18 +133,17 @@ body{
           a {
             font-weight: 600;
             color: #ffffff;
-            // color: #FF991C;
             text-decoration: none;
 
             &:hover {
               text-decoration: underline;
               color: #E86100;
+              transform: translateY(-2px);
             }
           }
 
           p {
             margin: 0.25rem 0 0;
-            // color: #566573;
             display: flex;
           }
         }
@@ -124,12 +151,11 @@ body{
 
       p {
         text-align: center;
-        // color: #7f8c8d;
         font-style: italic;
       }
     }
   }
-}
+
 
 
 // NewEntry -------------------------------------
@@ -227,15 +253,16 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  // min-height: 100vh;
   background-color: #1D1D1D;
+  padding-top: 50px;
 }
 
 .journal-error-card,
 .journal-display-card {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  // -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   padding: 2rem;
@@ -243,14 +270,11 @@ form {
   width: 100%;
   color: #E86100;
   border: 1px solid rgba(255, 255, 255, 0.2);
-
-  display: flex;
-  flex-direction: column;
 }
 
 .journal-error-card h1,
 .journal-display-card h1 {
-  margin: 1rem 0;
+  // margin: 1rem 0;
   font-size: 1.5rem;
   color: #f6f6f6;
 }

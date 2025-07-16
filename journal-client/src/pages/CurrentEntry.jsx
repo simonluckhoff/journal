@@ -42,7 +42,7 @@ function CurrentEntry() {
                     <p className='entry-paragraph'>{entry.user_entry}</p>
                 </div>
                 <div className="return-home">
-                    <Link to="/new-entry"><p>Edit</p></Link><br />
+                    <Link to="/edit-entry/${entry.slug}"><p>Edit</p></Link><br />
                     <Link to="/"><p>Return Home</p></Link>
                 </div>
             </div>
