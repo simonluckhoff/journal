@@ -35,7 +35,7 @@ const NewEntry = () => {
     setResponse(data.message)
 
         setTimeout(() => {
-            const slug = date_today.trim().toLowerCase();
+            const slug = title.trim().toLowerCase();
             navigate(`/Entry/${slug}`);
         }, 1000); 
     }

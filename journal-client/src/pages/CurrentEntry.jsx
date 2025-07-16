@@ -35,17 +35,19 @@ function CurrentEntry() {
         <div className="journal-wrapper">
             <div className="journal-display-card">
                 <div className="journal-edit-link">
-                    <Link to="/new-entry"><p>Edit</p></Link>
                     <h1>{entry.date_today}</h1>
                 </div>
                 <div className="journal-info-card">
                     <h3>{entry.title}</h3>
-                    <p>{entry.user_entry}</p>
+                    <p className='entry-paragraph'>{entry.user_entry}</p>
+                </div>
+                <div className="return-home">
+                    <Link to="/new-entry"><p>Edit</p></Link><br />
+                    <Link to="/"><p>Return Home</p></Link>
                 </div>
             </div>
         </div>
     );
-
 }
 
 export default CurrentEntry;

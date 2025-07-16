@@ -260,7 +260,7 @@ form {
   color: #f6f6f6;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #E86100;
   transition: all 0.3s ease;
   backdrop-filter: blur(6px);
@@ -269,9 +269,15 @@ form {
 }
 
 .journal-edit-link a p:hover {
-  background-color: rgba(232, 97, 0, 0.1);
+  background-color: rgba(232, 97, 0, 0.7);
   transform: scale(1.05);
   cursor: pointer;
+  font-weight: bold;
+}
+
+.entry-paragraph{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .journal-edit-link {
@@ -292,7 +298,7 @@ form {
   display: flex;
   align-items: left;
   color: #eaeaea;
-  margin-top: 1.5rem;
+  // margin-top: 1.5rem;
 }
 
 .journal-info-card {
@@ -305,4 +311,28 @@ form {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.return-home a p {
+  width: fit-content;
+  font-size: 1rem;
+  color: #f6f6f6;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #E86100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.return-home a:visited {
+  color: #f6f6f6;
+}
+
+.return-home a p:hover {
+  background-color: rgba(232, 97, 0, 0.7);
+  transform: scale(1.05);
+  cursor: pointer;
+  font-weight: bold;
 }

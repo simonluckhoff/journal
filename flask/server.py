@@ -3,6 +3,7 @@ from flask_cors import CORS
 from journal import lets_journal
 import json
 import os
+import datetime
 
 app = Flask(__name__)
 CORS(app)   
@@ -21,9 +22,10 @@ def add_entry():
 
         new_entry = {
             "date_today": date_today,
-            "slug": date_today,
+            "slug": title,
             "title": title,
-            "user_entry": user_entry
+            "user_entry": user_entry,
+            "created_at": datetime.datetime.now().isoformat()
         }
 
         try:
@@ -48,9 +50,13 @@ def add_entry():
                     entries = json.load(file)
             else:
                 entries = []
+            # entries=sorted(entries, key=lambda x: datetime.datetime.strptime(x['date_today'], "%d-%m-%Y"), reverse=True)
+            entries=sorted(entries, key=lambda x: x.get('created_at', x['date_today']), reverse=True)
             return jsonify(entries), 200
         except Exception as e:
             return jsonify({'message': f'Error: {str(e)}'}), 500
+        
+
         
     if request.method == 'PATCH':
         data = request.get_json()
