@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)   
 
 # that /api/ allows to navigate, reverse proxying
-@app.route('/api/entries', methods=['GET', 'POST', 'PATCH'])
+@app.route('/api/entries', methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def add_entry():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     json_file = os.path.join(current_dir, 'entries.json')
@@ -61,7 +61,6 @@ def add_entry():
             return jsonify({'message': f'Error: {str(e)}'}), 500
         
 
-        
     if request.method == 'PATCH':
         data = request.get_json()
         slug = data.get('slug')
@@ -80,6 +79,25 @@ def add_entry():
 
         return jsonify({'message': 'Entry updated successfully'})
 
+
+    if request.method == 'DELETE': 
+        data = request.get_json()
+        slug = data.get('slug')
+        if not os.path.exists('entries.json'):
+            return jsonify({"error": "File not found"}), 404
+        
+        with open('entries.json', 'r') as f:
+            entries = json.load(f)
+
+        updated_entries = [entry for entry in entries if entry['slug'] != slug]
+
+        if len(updated_entries) == len(entries):
+            return jsonify({"error": "Entry not found"}), 404
+        
+        with open('entries.json', 'w') as f:
+            json.dump(updated_entries, f, indent=2)
+
+        return jsonify({"message": "Entry deleted"}), 200
 
         
 if __name__ == '__main__':

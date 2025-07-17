@@ -70,11 +70,6 @@ body{
     }
   }
 
-
-
-  // --------------------------------
-
-
   ul {
     list-style: none;
     padding: 0;
@@ -95,10 +90,7 @@ body{
       }
     }
   }
-}
-
-  // --------------------------------
-  
+}  
 
 
   .entry_body {
@@ -164,7 +156,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  // min-height: 100vh;
+  padding-top: 30px;
   // background: linear-gradient(135deg, #e0eafc, #cfdef3);
   background-color: #1D1D1D;
   // padding: 2rem;
@@ -255,7 +248,7 @@ form {
   justify-content: center;
   // min-height: 100vh;
   background-color: #1D1D1D;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .journal-error-card,
@@ -300,7 +293,7 @@ form {
 }
 
 .entry-paragraph{
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 20px;
 }
 
@@ -360,3 +353,29 @@ form {
   cursor: pointer;
   font-weight: bold;
 }
+
+.submitting, button{
+  width: fit-content;
+  font-size: 1rem;
+  color: #f6f6f6;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #E86100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.submitting:hover {
+  background-color: rgba(232, 97, 0, 0.7);
+  transform: scale(1.05);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+

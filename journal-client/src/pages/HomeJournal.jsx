@@ -1,8 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function HomeJournal() {
+    const navigate = useNavigate();
+    const { slug } = useParams();
     const [entries, setEntries] = useState([]);
+    const handleDelete = async () => {
+        if (!window.confirm("Are you sure you want to delete this entry?")) return;
+
+        try {
+            const response = await fetch('http://localhost:5000/api/entries', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ slug }),
+            });
+
+            if (response.ok) {
+                navigate('/');
+            } else {
+                const data = await response.json();
+                alert(data.error || 'Failed to delete entry');
+            }
+        } catch (err) {
+            alert('Error deleting entry');
+        }
+    };
 
     useEffect(() => {
         const fetchEntries = async () => {
@@ -41,6 +63,7 @@ function HomeJournal() {
                         {entries.map((entry, index) => (
                             <li key={index}>
                                 <Link to={`/entry/${entry.slug}`}>{entry.date_today}<p>{entry.title}</p></Link>
+                                <button className='submitting' onClick={handleDelete}>Delete</button>
                             </li>
                         ))}
                     </ul>

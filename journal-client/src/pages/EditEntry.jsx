@@ -42,7 +42,7 @@ function EditEntry() {
                     <input name="title" value={entry.title} onChange={handleChange} />
                 <label>Entry:</label>
                         <textarea name="user_entry" value={entry.user_entry} onChange={handleChange} />
-                <button type="submit">Save</button>
+                <button className='submitting' type="submit">Save</button>
             </form>
             <div className="return-home">
                 <Link to="/"><p>Return Home</p></Link>

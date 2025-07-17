@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const NewEntry = () => {
     const [date_today, setDateToday] = useState('');
@@ -59,8 +59,11 @@ const NewEntry = () => {
                         rows={10}
                     />
 
-                    <button type='submit'>Add</button>
+                    <button className='submitting' type='submit'>Add</button>
                     {error && <p className="error-msg">{error}</p>}
+                    <div className="return-home">
+                        <Link to="/"><p>Return Home</p></Link>
+                    </div>
                 </form>
             </div>
         </div>

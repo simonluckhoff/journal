@@ -1,10 +1,31 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 function CurrentEntry() {
     const { slug } = useParams();
     const [entry, setEntry] = useState(null);
+    const navigate = useNavigate();
+
+    const handleDelete = async () => {
+        if (!window.confirm("Are you sure you want to delete this entry?")) return;
+
+        try {
+            const response = await fetch('http://localhost:5000/api/entries', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ slug }),
+            });
+
+            if (response.ok) {
+                navigate('/');
+            } else {
+                const data = await response.json();
+                alert(data.error || 'Failed to delete entry');
+            }
+        } catch (err) {
+            alert('Error deleting entry');
+        }
+    };
 
     useEffect(() => {
         const fetchEntries = async () => {
@@ -42,6 +63,7 @@ function CurrentEntry() {
                     <p className='entry-paragraph'>{entry.user_entry}</p>
                 </div>
                 <div className="return-home">
+                    <button className='submitting' onClick={handleDelete}>Delete</button>
                     <Link to={`/edit-entry/${entry.slug}`}><p>Edit</p></Link><br />
                     <Link to="/"><p>Return Home</p></Link>
                 </div>
