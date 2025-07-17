@@ -5,7 +5,8 @@ function HomeJournal() {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [entries, setEntries] = useState([]);
-    const handleDelete = async () => {
+
+    const handleDelete = async (slug) => {
         if (!window.confirm("Are you sure you want to delete this entry?")) return;
 
         try {
@@ -16,7 +17,8 @@ function HomeJournal() {
             });
 
             if (response.ok) {
-                navigate('/');
+                // navigate('/');
+                setEntries(entries.filter(entry => entry.slug !== slug));
             } else {
                 const data = await response.json();
                 alert(data.error || 'Failed to delete entry');
@@ -61,10 +63,27 @@ function HomeJournal() {
                 ) : (
                     <ul>
                         {entries.map((entry, index) => (
-                            <li key={index}>
-                                <Link to={`/entry/${entry.slug}`}>{entry.date_today}<p>{entry.title}</p></Link>
-                                <button className='submitting' onClick={handleDelete}>Delete</button>
+                            <Link key={index} to={`/entry/${entry.slug}`} className="li-link">
+                            <li>
+                                <div className="info-home">
+                                <div className="info-card">
+                                    <span>{entry.date_today}</span>
+                                    <p>{entry.title}</p>
+                                </div>
+                                <div className="info-delete-update">
+                                    <button
+                                    className="delete-icon"
+                                    onClick={(e) => {
+                                        e.preventDefault(); // prevent Link navigation
+                                        handleDelete(entry.slug);
+                                    }}
+                                    >
+                                    <img className="img-tag" src="/trash.svg" alt="delete" />
+                                    </button>
+                                </div>
+                                </div>
                             </li>
+                            </Link>
                         ))}
                     </ul>
                 )}

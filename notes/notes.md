@@ -9,3 +9,8 @@ Updates:
 - date picker or manual word
 - date and title can be bigger.
 - automatic autocorrector. 
+
+
+
+
+- deleting from home screen & trash icon
