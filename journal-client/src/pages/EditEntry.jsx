@@ -11,6 +11,7 @@ function EditEntry() {
         fetch('http://localhost:5000/api/entries')
             .then(res => res.json())
             .then(data => {
+                console.log(data, slug); // debug line
                 const found = data.find(e => e.slug === slug);
                 if (found) setEntry(found);
             });
@@ -27,28 +28,26 @@ function EditEntry() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...entry, slug}),
         }); 
-        navigate('/');
+        navigate(`/entry/${slug}`);
     }
 
   return (
-    <div className="edit-entry">
-        <h1>Edit Entry</h1>
-        <form onSubmit={handleSubmit}>
-            <label>
-                Date:
-                <input name="date_entry" value={entry.date_entry} onChange={handleChange} />
-            </label>
-            <label>
-                Title:
-                <input name="title" value={entry.title} onChange={handleChange} />
-            </label>
-            <label>
-                Entry:
-                <input name="user_entry" value={entry.user_entry} onChange={handleChange} />
-            </label>
-            <button type="submit">Save</button>
-        </form>
-        <Link to="/"><p>Return Home</p></Link>
+        <div className="form-container">
+            <div className="form-card">
+            <h1>Edit Entry</h1>
+            <form onSubmit={handleSubmit}>
+                <label>Date:</label>
+                    <input name="date_today" value={entry.date_today} onChange={handleChange} />
+                <label>Title:</label>
+                    <input name="title" value={entry.title} onChange={handleChange} />
+                <label>Entry:</label>
+                        <textarea name="user_entry" value={entry.user_entry} onChange={handleChange} />
+                <button type="submit">Save</button>
+            </form>
+            <div className="return-home">
+                <Link to="/"><p>Return Home</p></Link>
+            </div>
+        </div>
     </div>
   )
 }

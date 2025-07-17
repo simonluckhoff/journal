@@ -4,6 +4,7 @@ from journal import lets_journal
 import json
 import os
 import datetime
+import re 
 
 app = Flask(__name__)
 CORS(app)   
@@ -14,6 +15,9 @@ def add_entry():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     json_file = os.path.join(current_dir, 'entries.json')
 
+    def slugify(title):
+        return re.sub(r'\W+', '-', title.lower()).strip('-')
+
     if request.method == 'POST':
         data = request.json
         date_today = data.get('date_today')
@@ -22,7 +26,7 @@ def add_entry():
 
         new_entry = {
             "date_today": date_today,
-            "slug": title,
+            "slug": slugify(title),
             "title": title,
             "user_entry": user_entry,
             "created_at": datetime.datetime.now().isoformat()
