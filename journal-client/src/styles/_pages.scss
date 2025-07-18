@@ -116,10 +116,13 @@ body{
           padding: 1rem;
           margin-bottom: 1rem;
           border-radius: 8px;
+          color: #eaeaea;
 
           &:hover {
             background: rgba(255, 255, 255, 0.3);
-            color: #E86100;
+            // color: #E86100;
+            box-shadow: 4px 4px 20px rgba(255, 183, 132, 0.2);
+            font-weight: bold;
           }
 
           a {

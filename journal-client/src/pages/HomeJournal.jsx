@@ -6,9 +6,26 @@ function HomeJournal() {
     const { slug } = useParams();
     const [entries, setEntries] = useState([]);
 
+    const newNote = () => {
+        console.log("new note triggered");
+    };
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if ((e.cmmdKey || e.metaKey) && e.key === 'j') {
+                e.preventDefault();
+                navigate('/new-entry');
+            }
+        }
+    
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [navigate]);
+
     const handleDelete = async (slug) => {
         if (!window.confirm("Are you sure you want to delete this entry?")) return;
-
+   
         try {
             const response = await fetch('http://localhost:5000/api/entries', {
                 method: 'DELETE',
