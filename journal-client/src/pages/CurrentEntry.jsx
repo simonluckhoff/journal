@@ -63,9 +63,11 @@ function CurrentEntry() {
                     <p className='entry-paragraph'>{entry.user_entry}</p>
                 </div>
                 <div className="return-home">
-                    <button className='submitting' onClick={handleDelete}>Delete</button>
-                    <Link to={`/edit-entry/${entry.slug}`}><p>Edit</p></Link><br />
                     <Link to="/"><p>Return Home</p></Link>
+                    <div className="second">
+                    <Link to={`/edit-entry/${entry.slug}`}><p>Edit</p></Link><br />
+                    <button className='submitting' onClick={handleDelete}><img className="img-tag" src="/trash.svg" alt="delete" /></button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -181,7 +181,6 @@ body{
   .delete-icon {
     background: transparent;
     border: 0;
-    filter: invert(1);
   }
 
   .delete-icon:hover{
@@ -372,6 +371,14 @@ form {
   align-items: flex-end;
 }
 
+.return-home{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .return-home a p {
   width: fit-content;
   font-size: 1rem;
@@ -437,3 +444,11 @@ a {
 //   color: #E86100;
 // }
 
+.img-tag{
+  filter: invert(1);
+}
+
+.second {
+  display: flex;
+  gap: 10px;
+}

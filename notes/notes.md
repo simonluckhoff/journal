@@ -1,7 +1,7 @@
 Things to add:
 - Password protect journal entries
 - how to make shortcuts on my page? cmmd+t to make new note. 
-
+- have buttons next to each other on viewing pages. 
 
 
 
